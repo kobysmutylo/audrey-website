@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audrey Smutylo — Email Marketing & Content Creation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4efe6;
+    --cream-deep: #ebe3d4;
+    --moss: #4a5d3a;
+    --moss-deep: #2f3a25;
+    --clay: #b85c38;
+    --terracotta: #d97757;
+    --ink: #1f2419;
+    --stone: #8a8578;
+    --paper: #fbf8f2;
+    --accent: #c8a97e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Fraunces', serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-weight: 400;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+  }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.8rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: var(--paper);
+  }
+
+  .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s ease;
+  }
+
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+  }
+
+  .hero-decorator {
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    writing-mode: vertical-rl;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--moss);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--moss);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--moss-deep);
+    margin-bottom: 1.5rem;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .hero h1 .italic {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--clay);
+    font-weight: 400;
+  }
+
+  .hero h1 span {
+    display: block;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .hero h1 span:nth-child(1) { animation-delay: 0.3s; }
+  .hero h1 span:nth-child(2) { animation-delay: 0.5s; }
+  .hero h1 span:nth-child(3) { animation-delay: 0.7s; }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 32rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hero-subtitle em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+  }
+
+  /* Organic shape illustration */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 500px;
+    justify-self: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 0.5s;
+  }
+
+  .leaf-svg {
+    width: 100%;
+    height: 100%;
+    animation: gentle-sway 8s ease-in-out infinite;
+  }
+
+  @keyframes gentle-sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  /* Divider */
+  .divider {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--stone);
+    border-top: 1px solid var(--cream-deep);
+    border-bottom: 1px solid var(--cream-deep);
+    background: var(--paper);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee {
+    display: inline-flex;
+    gap: 3rem;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .marquee span::after {
+    content: '✦';
+    color: var(--clay);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* About */
+  .about {
+    padding: 8rem 3rem;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 6rem;
+    align-items: start;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--clay);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: var(--clay);
+  }
+
+  .about-heading {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--moss-deep);
+    letter-spacing: -0.01em;
+    position: sticky;
+    top: 8rem;
+  }
+
+  .about-heading em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+    font-weight: 400;
+  }
+
+  .about-content p {
+    font-size: 1.2rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+    max-width: 36rem;
+  }
+
+  .about-content .lead {
+    font-size: 1.5rem;
+    font-family: 'Instrument Serif', serif;
+    color: var(--moss);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .about-content .lead::first-letter {
+    font-size: 3.5rem;
+    float: left;
+    line-height: 0.9;
+    margin: 0.3rem 0.6rem 0 0;
+    color: var(--clay);
+    font-family: 'Fraunces', serif;
+  }
+
+  /* Expertise Grid */
+  .expertise {
+    padding: 8rem 3rem;
+    background: var(--paper);
+  }
+
+  .expertise-header {
+    max-width: 1400px;
+    margin: 0 auto 5rem;
+  }
+
+  .expertise-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--moss-deep);
+    max-width: 40rem;
+  }
+
+  .expertise-header h2 em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+  }
+
+  .expertise-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .expertise-card {
+    background: var(--cream);
+    padding: 3rem 2.5rem;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: 1px solid transparent;
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--clay);
+  }
+
+  .expertise-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  .expertise-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--moss-deep);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .expertise-card h3 em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+  }
+
+  .expertise-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .expertise-tags span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--moss);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--moss);
+    border-radius: 100px;
+  }
+
+  /* Values / Passions */
+  .passions {
+    padding: 8rem 3rem;
+    background: var(--moss-deep);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .passions::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(216, 119, 87, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .passions-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .passions-header {
+    margin-bottom: 5rem;
+    max-width: 48rem;
+  }
+
+  .passions-header .section-label {
+    color: var(--terracotta);
+  }
+
+  .passions-header .section-label::before { background: var(--terracotta); }
+
+  .passions-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+
+  .passions-header h2 em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--terracotta);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .passions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .passion-item {
+    padding: 2.5rem 1.5rem;
+    border-top: 1px solid rgba(244, 239, 230, 0.2);
+    transition: all 0.5s ease;
+    position: relative;
+  }
+
+  .passion-item:hover {
+    background: rgba(244, 239, 230, 0.04);
+    border-top-color: var(--terracotta);
+  }
+
+  .passion-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+    color: var(--terracotta);
+  }
+
+  .passion-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .passion-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(244, 239, 230, 0.75);
+  }
+
+  /* Education / Credentials */
+  .credentials {
+    padding: 8rem 3rem;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .credentials-visual svg {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .credentials-content h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    font-weight: 400;
+    color: var(--moss-deep);
+    margin-bottom: 2rem;
+  }
+
+  .credentials-content h2 em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+  }
+
+  .credential-item {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--cream-deep);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .credential-item:last-child { border-bottom: 1px solid var(--cream-deep); }
+
+  .credential-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+    padding-top: 0.35rem;
+  }
+
+  .credential-details h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--moss-deep);
+    margin-bottom: 0.35rem;
+  }
+
+  .credential-details p {
+    font-size: 0.95rem;
+    color: var(--ink);
+    opacity: 0.8;
+  }
+
+  /* Contact */
+  .contact {
+    padding: 8rem 3rem 6rem;
+    background: var(--paper);
+    text-align: center;
+    position: relative;
+  }
+
+  .contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .contact h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    font-weight: 300;
+    color: var(--moss-deep);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact h2 em {
+    font-family: 'Instrument Serif', serif;
+    color: var(--clay);
+    font-weight: 400;
+  }
+
+  .contact-subtitle {
+    font-size: 1.2rem;
+    color: var(--ink);
+    max-width: 32rem;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
+
+  .contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .contact-button {
+    padding: 1.2rem 2.5rem;
+    background: var(--moss-deep);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: 100px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid var(--moss-deep);
+  }
+
+  .contact-button:hover {
+    background: var(--clay);
+    border-color: var(--clay);
+    transform: translateY(-2px);
+  }
+
+  .contact-button.secondary {
+    background: transparent;
+    color: var(--moss-deep);
+  }
+
+  .contact-button.secondary:hover {
+    background: var(--moss-deep);
+    color: var(--cream);
+    border-color: var(--moss-deep);
+  }
+
+  .contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+
+  .contact-details strong {
+    color: var(--moss-deep);
+    font-weight: 500;
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    letter-spacing: 0;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2rem 3rem;
+    background: var(--moss-deep);
+    color: var(--cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  footer em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { gap: 1.2rem; font-size: 0.65rem; }
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 7rem 1.5rem 4rem; }
+    .hero-visual { max-width: 300px; }
+    .hero-decorator { display: none; }
+    .about { grid-template-columns: 1fr; gap: 2rem; padding: 5rem 1.5rem; }
+    .about-heading { position: static; }
+    .expertise { padding: 5rem 1.5rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .passions { padding: 5rem 1.5rem; }
+    .passions-grid { grid-template-columns: repeat(2, 1fr); }
+    .credentials { grid-template-columns: 1fr; padding: 5rem 1.5rem; }
+    .contact { padding: 5rem 1.5rem; }
+    .contact-details { gap: 2rem; }
+    footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Audrey S.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Expertise</a>
+    <a href="#values">Values</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Portfolio — Est. 2026</div>
+    <h1>
+      <span>Audrey</span>
+      <span><em>Smutylo</em></span>
+      <span style="font-size: 0.35em; letter-spacing: 0.05em; margin-top: 1.5rem; font-family: 'DM Mono', monospace; text-transform: uppercase; color: var(--stone); font-weight: 400;">Email Marketing × Content Creation</span>
+    </h1>
+    <p class="hero-subtitle">
+      Crafting words that feel like a <em>deep breath</em> — thoughtful email campaigns and content that connect brands to real humans, grounded in creativity, warmth, and intention.
+    </p>
+  </div>
+
+  <div class="hero-visual">
+    <svg class="leaf-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4a5d3a"/>
+          <stop offset="100%" stop-color="#2f3a25"/>
+        </linearGradient>
+        <linearGradient id="clayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d97757"/>
+          <stop offset="100%" stop-color="#b85c38"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Sun circle -->
+      <circle cx="280" cy="120" r="60" fill="url(#clayGrad)" opacity="0.9"/>
+
+      <!-- Main leaf shape -->
+      <path d="M 200 340 Q 80 300 70 180 Q 60 60 200 60 Q 340 60 330 180 Q 320 300 200 340 Z"
+            fill="url(#leafGrad)" opacity="0.95"/>
+
+      <!-- Leaf vein -->
+      <path d="M 200 60 Q 200 200 200 340" stroke="#c8a97e" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M 200 120 Q 150 140 110 130" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 200 120 Q 250 140 290 130" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 200 180 Q 140 200 90 190" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 200 180 Q 260 200 310 190" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 200 240 Q 150 250 120 245" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 200 240 Q 250 250 280 245" stroke="#c8a97e" stroke-width="1" fill="none" opacity="0.5"/>
+
+      <!-- Small accent dots -->
+      <circle cx="100" cy="280" r="4" fill="#d97757"/>
+      <circle cx="340" cy="260" r="6" fill="#c8a97e"/>
+      <circle cx="130" cy="100" r="3" fill="#d97757" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <div class="hero-decorator">Mindful · Creative · Positive</div>
+</section>
+
+<div class="divider">
+  <div class="marquee">
+    <span>Email Strategy</span>
+    <span>Content Creation</span>
+    <span>Brand Voice</span>
+    <span>Storytelling</span>
+    <span>Mindful Marketing</span>
+    <span>Community Building</span>
+    <span>Email Strategy</span>
+    <span>Content Creation</span>
+    <span>Brand Voice</span>
+    <span>Storytelling</span>
+    <span>Mindful Marketing</span>
+    <span>Community Building</span>
+  </div>
+</div>
+
+<section id="about" class="about">
+  <div class="reveal">
+    <div class="section-label">About</div>
+    <h2 class="about-heading">
+      Words that <em>root</em>, stories that <em>grow.</em>
+    </h2>
+  </div>
+
+  <div class="about-content reveal">
+    <p class="lead">
+      Hi, I'm Audrey — an email marketer and content creator with a love for language that feels honest and alive.
+    </p>
+    <p>
+      I'm a graduate of Dalhousie University, and over the years I've built my practice around a simple belief: the best marketing doesn't shout — it <em style="font-family: 'Instrument Serif'; color: var(--clay);">listens</em>. It meets people where they are, offers something useful or beautiful, and leaves them feeling a little more connected than before.
+    </p>
+    <p>
+      Whether I'm writing a welcome series, shaping a brand's voice, or dreaming up a content calendar, I bring the same intention I bring to my yoga practice — presence, patience, and a genuine curiosity for what makes each story unique.
+    </p>
+  </div>
+</section>
+
+<section id="work" class="expertise">
+  <div class="expertise-header reveal">
+    <div class="section-label">What I Do</div>
+    <h2>A thoughtful mix of <em>strategy</em> and <em>soul.</em></h2>
+  </div>
+
+  <div class="expertise-grid">
+    <div class="expertise-card reveal" data-num="01">
+      <h3>Email <em>Marketing</em></h3>
+      <p>From welcome sequences to nurture flows and newsletter strategy — I design email journeys that build trust, drive engagement, and feel genuinely human in every inbox.</p>
+      <div class="expertise-tags">
+        <span>Campaign Strategy</span>
+        <span>Automation</span>
+        <span>Copywriting</span>
+        <span>A/B Testing</span>
+      </div>
+    </div>
+
+    <div class="expertise-card reveal" data-num="02">
+      <h3>Content <em>Creation</em></h3>
+      <p>Blog articles, social captions, brand stories, and long-form content that reflect a brand's values while speaking directly to the people who matter most.</p>
+      <div class="expertise-tags">
+        <span>Editorial</span>
+        <span>Social Media</span>
+        <span>SEO Writing</span>
+        <span>Brand Storytelling</span>
+      </div>
+    </div>
+
+    <div class="expertise-card reveal" data-num="03">
+      <h3>Brand <em>Voice</em></h3>
+      <p>Helping brands find — and stay true to — a voice that feels like them. Tone guides, messaging frameworks, and content that holds up across every touchpoint.</p>
+      <div class="expertise-tags">
+        <span>Voice & Tone</span>
+        <span>Messaging</span>
+        <span>Style Guides</span>
+      </div>
+    </div>
+
+    <div class="expertise-card reveal" data-num="04">
+      <h3>Content <em>Strategy</em></h3>
+      <p>Thoughtful planning that ties together what you're saying, where you're saying it, and why it matters — so every piece of content earns its place.</p>
+      <div class="expertise-tags">
+        <span>Editorial Calendars</span>
+        <span>Audience Research</span>
+        <span>Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values" class="passions">
+  <div class="passions-inner">
+    <div class="passions-header reveal">
+      <div class="section-label">Beyond Work</div>
+      <h2>The things that <em>keep me grounded</em> — and feed the work.</h2>
+    </div>
+
+    <div class="passions-grid">
+      <div class="passion-item reveal">
+        <svg class="passion-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="18" r="5"/>
+          <path d="M24 24 v12 M12 36 Q24 28 36 36 M14 42 L24 36 L34 42"/>
+        </svg>
+        <h4>Yoga</h4>
+        <p>A daily practice of coming back to the breath. What I learn on the mat shows up everywhere — especially in how I approach my work.</p>
+      </div>
+
+      <div class="passion-item reveal">
+        <svg class="passion-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8 Q30 16 30 24 Q30 34 24 40 Q18 34 18 24 Q18 16 24 8 Z"/>
+          <path d="M24 8 v32"/>
+          <circle cx="14" cy="30" r="2" fill="currentColor"/>
+          <circle cx="34" cy="28" r="2" fill="currentColor"/>
+        </svg>
+        <h4>Vegan Food</h4>
+        <p>Cooking plant-based meals that celebrate flavor and season. Food as creativity, connection, and care — one colorful bowl at a time.</p>
+      </div>
+
+      <div class="passion-item reveal">
+        <svg class="passion-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 36 L16 20 L24 28 L32 16 L42 36 Z"/>
+          <circle cx="34" cy="12" r="4" fill="currentColor" opacity="0.4"/>
+        </svg>
+        <h4>Outdoors</h4>
+        <p>Trails, oceans, quiet mornings in the woods. Nature is my favorite teacher — and the source I keep returning to for perspective.</p>
+      </div>
+
+      <div class="passion-item reveal">
+        <svg class="passion-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="14"/>
+          <circle cx="24" cy="24" r="8"/>
+          <circle cx="24" cy="24" r="2" fill="currentColor"/>
+        </svg>
+        <h4>Mindful Living</h4>
+        <p>Slowing down, noticing more. Choosing intention over urgency — at home, at work, and in the way I show up for the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="credentials">
+  <div class="credentials-visual reveal">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="credGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d97757"/>
+          <stop offset="100%" stop-color="#b85c38"/>
+        </linearGradient>
+      </defs>
+      <!-- Decorative rings -->
+      <circle cx="200" cy="200" r="160" fill="none" stroke="#c8a97e" stroke-width="1" opacity="0.4"/>
+      <circle cx="200" cy="200" r="120" fill="none" stroke="#c8a97e" stroke-width="1" opacity="0.6"/>
+      <circle cx="200" cy="200" r="80" fill="url(#credGrad)" opacity="0.15"/>
+
+      <!-- Book icon -->
+      <path d="M 140 160 L 140 260 Q 170 250 200 255 Q 230 250 260 260 L 260 160 Q 230 150 200 155 Q 170 150 140 160 Z"
+            fill="none" stroke="#2f3a25" stroke-width="2"/>
+      <path d="M 200 155 L 200 255" stroke="#2f3a25" stroke-width="2"/>
+
+      <!-- Sun rays -->
+      <g stroke="#d97757" stroke-width="2" stroke-linecap="round">
+        <line x1="200" y1="60" x2="200" y2="80"/>
+        <line x1="200" y1="320" x2="200" y2="340"/>
+        <line x1="60" y1="200" x2="80" y2="200"/>
+        <line x1="320" y1="200" x2="340" y2="200"/>
+        <line x1="100" y1="100" x2="114" y2="114"/>
+        <line x1="286" y1="286" x2="300" y2="300"/>
+        <line x1="300" y1="100" x2="286" y2="114"/>
+        <line x1="114" y1="286" x2="100" y2="300"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="credentials-content reveal">
+    <div class="section-label">Background</div>
+    <h2>Built on a foundation of <em>curiosity</em> and craft.</h2>
+
+    <div class="credential-item">
+      <div class="credential-year">2026</div>
+      <div class="credential-details">
+        <h4>Dalhousie University</h4>
+        <p>Halifax, Nova Scotia — Graduate</p>
+      </div>
+    </div>
+
+    <div class="credential-item">
+      <div class="credential-year">ONGOING</div>
+      <div class="credential-details">
+        <h4>Email Marketing & Content Strategy</h4>
+        <p>Hands-on experience across campaigns, editorial, and brand voice work</p>
+      </div>
+    </div>
+
+    <div class="credential-item">
+      <div class="credential-year">ALWAYS</div>
+      <div class="credential-details">
+        <h4>Student of the Everyday</h4>
+        <p>Yoga, reading, nature, and mindful practice — the quiet classrooms</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content: center;">Let's Talk</div>
+    <h2>Say <em>hello.</em></h2>
+    <p class="contact-subtitle">
+      Working on something that needs thoughtful words, a fresh email strategy, or a brand voice that actually sounds like you? I'd love to hear about it.
+    </p>
+
+    <div class="contact-methods">
+      <a href="mailto:audrey179@gmail.com" class="contact-button">
+        Send an Email
+        <span>→</span>
+      </a>
+      <a href="tel:+16132633410" class="contact-button secondary">
+        Give a Call
+        <span>→</span>
+      </a>
+    </div>
+
+    <div class="contact-details">
+      <div>
+        Email
+        <strong>audrey179@gmail.com</strong>
+      </div>
+      <div>
+        Phone
+        <strong>613.263.3410</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Audrey Smutylo</div>
+  <div><em>Made with intention.</em></div>
+  <div>Canada</div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
